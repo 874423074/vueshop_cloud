@@ -9,7 +9,15 @@
 
     <name>vueshop-cloud</name>
     <packaging>pom</packaging>
-    <description>vueshop-cloud</description>
+    <description>公众号：MarkerHub</description>
+
+    <modules>
+        <module>shop-gateway</module>
+        <module>shop-auth</module>
+        <module>shop-common</module>
+        <module>shop-service</module>
+        <module>shop-service-api</module>
+    </modules>
 
     <properties>
         <java.version>1.8</java.version>
