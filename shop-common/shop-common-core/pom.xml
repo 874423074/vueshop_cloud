@@ -5,21 +5,23 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.markerhub</groupId>
-        <artifactId>vueshop-cloud</artifactId>
+        <artifactId>shop-common</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>shop-common</artifactId>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>shop-common-core</module>
-    </modules>
+    <artifactId>shop-common-core</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
