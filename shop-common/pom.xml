@@ -15,6 +15,7 @@
     <modules>
         <module>shop-common-core</module>
         <module>shop-common-mybatis</module>
+        <module>shop-common-redis</module>
     </modules>
 
     <properties>
