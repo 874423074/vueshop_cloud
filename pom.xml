@@ -29,11 +29,15 @@
         <spring-cloud.version>2021.0.5</spring-cloud.version>
 
         <mybatis-plus.version>3.5.2</mybatis-plus.version>
+        <mysql-connector.version>8.4.0</mysql-connector.version>
         <p6spy.version>3.9.1</p6spy.version>
+
         <qcloud-cos.version>5.6.89</qcloud-cos.version>
         <hutool.version>5.8.9</hutool.version>
         <alipay.version>4.31.28.ALL</alipay.version>
         <kaptcha.version>0.0.9</kaptcha.version>
+
+        <vueshop-cloud.version>0.0.1-SNAPSHOT</vueshop-cloud.version>
     </properties>
 
     <dependencies>
@@ -60,6 +64,13 @@
     </dependencies>
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-common-core</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -90,8 +101,9 @@
                 <version>${mybatis-plus.version}</version>
             </dependency>
             <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>${mysql-connector.version}</version>
                 <scope>runtime</scope>
             </dependency>
 
