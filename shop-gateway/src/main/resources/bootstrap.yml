@@ -5,6 +5,9 @@ spring:
     name: shop-gateway
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
       routes:
         - id: shop-auth-route
           uri: lb://shop-auth
@@ -17,5 +20,6 @@ spring:
         server-addr: localhost:8848
         username: nacos
         password: nacos
-
-
+sa-token:
+  token-name: satoken
+  is-read-cookie: false

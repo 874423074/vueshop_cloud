@@ -36,6 +36,7 @@
         <hutool.version>5.8.9</hutool.version>
         <alipay.version>4.31.28.ALL</alipay.version>
         <kaptcha.version>0.0.9</kaptcha.version>
+        <sa-token.version>1.38.0</sa-token.version>
 
         <vueshop-cloud.version>0.0.1-SNAPSHOT</vueshop-cloud.version>
     </properties>
@@ -73,6 +74,11 @@
             <dependency>
                 <groupId>com.markerhub</groupId>
                 <artifactId>shop-common-core</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-common-satoken</artifactId>
                 <version>${vueshop-cloud.version}</version>
             </dependency>
 
@@ -137,6 +143,22 @@
                 <groupId>com.github.axet</groupId>
                 <artifactId>kaptcha</artifactId>
                 <version>${kaptcha.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-spring-boot-starter</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-redis-jackson</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-core</artifactId>
+                <version>${sa-token.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
