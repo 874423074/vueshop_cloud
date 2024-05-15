@@ -1,0 +1,21 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: shop-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: shop-auth-route
+          uri: lb://shop-auth
+          predicates:
+            - Path=/a/**
+          filters:
+            - StripPrefix=1
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+
+

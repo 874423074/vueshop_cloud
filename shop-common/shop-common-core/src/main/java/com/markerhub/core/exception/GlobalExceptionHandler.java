@@ -30,13 +30,6 @@ public class GlobalExceptionHandler {
 		return Result.fail(e.getMessage());
 	}
 
-	@ResponseStatus(HttpStatus.NOT_FOUND)
-	@ExceptionHandler(value = NoHandlerFoundException.class)
-	public Result handler(NoHandlerFoundException e) {
-		log.error("404异常 ---- {}", e.getMessage());
-		return Result.fail(e.getMessage());
-	}
-
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(value = BindException.class)
 	public Result handler(BindException e) {

@@ -1,7 +1,11 @@
 package com.markerhub.gateway;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class ShopGatewayApplication {
 	public static void main(String[] args) {
-		System.out.println("Hello world!");
+		SpringApplication.run(ShopGatewayApplication.class, args);
 	}
 }
