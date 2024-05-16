@@ -25,4 +25,21 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.markerhub</groupId>
+            <artifactId>shop-common-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.markerhub</groupId>
+            <artifactId>shop-common-satoken</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+    </dependencies>
+
 </project>

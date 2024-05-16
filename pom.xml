@@ -81,6 +81,81 @@
                 <artifactId>shop-common-satoken</artifactId>
                 <version>${vueshop-cloud.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-common-mybatis</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-common-feign</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-common-redis</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
+
+            <!--service-->
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-service-system</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-service-cartItem</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-service-product</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-service-order</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-service-search</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
+
+            <!--api-->
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-service-system-api</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-service-search-api</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-service-order-api</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-service-product-api</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-service-cartItem-api</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-service-user-api</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
+
 
             <dependency>
                 <groupId>org.springframework.cloud</groupId>

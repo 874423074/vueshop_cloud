@@ -17,6 +17,7 @@
         <module>shop-service-product-api</module>
         <module>shop-service-search-api</module>
         <module>shop-service-system-api</module>
+        <module>shop-service-user-api</module>
     </modules>
 
     <properties>
@@ -24,5 +25,18 @@
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.markerhub</groupId>
+            <artifactId>shop-common-mybatis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+    </dependencies>
 
 </project>

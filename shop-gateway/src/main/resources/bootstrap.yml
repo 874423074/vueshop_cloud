@@ -15,6 +15,12 @@ spring:
             - Path=/a/**
           filters:
             - StripPrefix=1
+        - id: shop-system-route
+          uri: lb://shop-system
+          predicates:
+            - Path=/s/**
+          filters:
+            - StripPrefix=1
     nacos:
       discovery:
         server-addr: localhost:8848

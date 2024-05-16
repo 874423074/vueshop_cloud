@@ -5,23 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.markerhub</groupId>
-        <artifactId>shop-service</artifactId>
+        <artifactId>shop-service-api</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>shop-service-system</artifactId>
+    <artifactId>shop-service-user-api</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.markerhub</groupId>
-            <artifactId>shop-service-system-api</artifactId>
-        </dependency>
-    </dependencies>
 
 </project>
