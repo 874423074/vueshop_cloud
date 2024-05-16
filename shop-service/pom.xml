@@ -10,6 +10,14 @@
     </parent>
 
     <artifactId>shop-service</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>shop-service-product</module>
+        <module>shop-service-cartItem</module>
+        <module>shop-service-order</module>
+        <module>shop-service-search</module>
+        <module>shop-service-system</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

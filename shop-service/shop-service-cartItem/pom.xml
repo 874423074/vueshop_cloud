@@ -5,19 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.markerhub</groupId>
-        <artifactId>vueshop-cloud</artifactId>
+        <artifactId>shop-service</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>shop-service-api</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>shop-service-cartItem-api</module>
-        <module>shop-service-order-api</module>
-        <module>shop-service-product-api</module>
-        <module>shop-service-search-api</module>
-        <module>shop-service-system-api</module>
-    </modules>
+    <artifactId>shop-service-cartItem</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
