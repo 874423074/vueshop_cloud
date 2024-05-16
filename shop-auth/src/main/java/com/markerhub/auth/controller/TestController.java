@@ -4,6 +4,7 @@ import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.dev33.satoken.stp.StpUtil;
 import com.markerhub.core.lang.Result;
+import com.markerhub.satoken.annotation.InnerAuth;
 import com.markerhub.satoken.annotation.Login;
 import com.markerhub.satoken.utils.StpUserUtil;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -69,6 +70,12 @@ public class TestController {
 		return Result.success(StpUserUtil.isLogin());
 	}
 
+
+	@InnerAuth
+	@GetMapping("/updateSale")
+	public Result updateSale(){
+		return Result.success("updateSale");
+	}
 
 
 

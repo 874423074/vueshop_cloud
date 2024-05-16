@@ -1,8 +1,15 @@
 package com.markerhub.satoken.config;
 
 import cn.dev33.satoken.config.SaTokenConfig;
+import cn.dev33.satoken.context.SaHolder;
+import cn.dev33.satoken.filter.SaServletFilter;
 import cn.dev33.satoken.interceptor.SaInterceptor;
+import cn.dev33.satoken.same.SaSameUtil;
 import cn.dev33.satoken.strategy.SaStrategy;
+import cn.dev33.satoken.util.SaResult;
+import cn.hutool.json.JSONUtil;
+import com.markerhub.core.lang.Result;
+import com.markerhub.satoken.interceptor.InnerAuthInterceptor;
 import com.markerhub.satoken.service.StpInterfaceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,6 +43,7 @@ public class SatokenConfigure implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		// 注册 Sa-Token 拦截器，打开注解式鉴权功能
 		registry.addInterceptor(new SaInterceptor()).addPathPatterns("/**");
+		registry.addInterceptor(new InnerAuthInterceptor()).addPathPatterns("/**");
 	}
 
 	@Bean
@@ -47,5 +55,20 @@ public class SatokenConfigure implements WebMvcConfigurer {
 	public void rewriteSaStrategy() {
 		// 重写Sa-Token的注解处理器，增加注解合并功能
 		SaStrategy.instance.getAnnotation = AnnotatedElementUtils::getMergedAnnotation;
+	}
+
+	// 内部服务外网隔离过滤器
+	@Bean
+	public SaServletFilter getSaServletFilter() {
+		return new SaServletFilter()
+				.addInclude("/**")
+				.addExclude("/favicon.ico")
+				.setAuth(obj -> {
+					SaSameUtil.checkCurrentRequestToken();
+				})
+				.setError(e -> {
+					SaHolder.getResponse().setHeader("Content-Type", "application/json;charset=UTF-8");
+					return JSONUtil.toJsonStr(Result.fail("认证失败，无法访问内部系统"));
+				});
 	}
 }
