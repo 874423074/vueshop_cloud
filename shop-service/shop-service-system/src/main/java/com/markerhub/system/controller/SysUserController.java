@@ -2,12 +2,17 @@ package com.markerhub.system.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.dev33.satoken.annotation.SaMode;
+import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import com.markerhub.core.lang.Result;
+import com.markerhub.satoken.annotation.InnerAuth;
+import com.markerhub.system.entity.SysMenu;
+import com.markerhub.system.entity.SysRole;
 import com.markerhub.system.entity.SysUser;
 import com.markerhub.mybatis.base.BaseController;
+import com.markerhub.system.service.SysMenuService;
 import com.markerhub.system.service.SysRoleService;
 import com.markerhub.system.service.SysUserService;
 import org.springframework.util.Assert;
@@ -16,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/sys/user")
@@ -26,6 +33,9 @@ public class SysUserController extends BaseController {
 
 	@Resource
 	SysRoleService sysRoleService;
+
+	@Resource
+	SysMenuService sysMenuService;
 
 	@GetMapping("/list")
 	@SaCheckPermission("sys:user:list")
@@ -89,5 +99,25 @@ public class SysUserController extends BaseController {
 		return Result.success();
 	}
 
+	// feign
+	@InnerAuth
+	@GetMapping("/roles")
+	public Result<List<String>> getUserRoles() {
+		List<SysRole> sysRoles = sysRoleService.listRolesByUserId(StpUtil.getLoginIdAsLong());
+
+		return Result.success(
+				sysRoles.stream().map(SysRole::getCode).collect(Collectors.toList())
+		);
+	}
+
+	@InnerAuth
+	@GetMapping("/perms")
+	public Result<List<String>> getUserPerms() {
+		List<SysMenu> sysMenus = sysMenuService.listMenusByUserId(StpUtil.getLoginIdAsLong());
+
+		return Result.success(
+				sysMenus.stream().map(SysMenu::getPerms).collect(Collectors.toList())
+		);
+	}
 
 }

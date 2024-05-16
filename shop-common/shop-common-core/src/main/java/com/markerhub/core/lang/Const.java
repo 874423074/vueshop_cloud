@@ -8,4 +8,7 @@ public class Const {
 	public static final String SA_SOURCE_INNER = "sa-inner";
 	public static final String SA_SOURCE_GATEWAY = "sa-gateway";
 
+	public static final String USER_TOKEN_NAME = "satoken-user";
+	public static final String ADMIN_TOKEN_NAME = "satoken";
+
 }

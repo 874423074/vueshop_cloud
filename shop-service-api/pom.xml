@@ -31,6 +31,10 @@
             <groupId>com.markerhub</groupId>
             <artifactId>shop-common-mybatis</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.markerhub</groupId>
+            <artifactId>shop-common-feign</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

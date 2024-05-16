@@ -36,6 +36,11 @@
             <artifactId>shop-common-core</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.markerhub</groupId>
+            <artifactId>shop-service-system-api</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
