@@ -1,0 +1,20 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: shop-product
+  profiles:
+    active: test
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+      config:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        file-extension: yml
+        shared-configs:
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}

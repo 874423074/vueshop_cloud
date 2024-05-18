@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.markerhub.product.mapper.AppSkuStockMapper">
+
+    <resultMap id="BaseResultMap" type="com.markerhub.product.entity.AppSkuStock">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="productId" column="product_id" jdbcType="BIGINT"/>
+            <result property="price" column="price" jdbcType="DECIMAL"/>
+            <result property="stock" column="stock" jdbcType="INTEGER"/>
+            <result property="sku" column="sku" jdbcType="VARCHAR"/>
+            <result property="created" column="created" jdbcType="TIMESTAMP"/>
+            <result property="updated" column="updated" jdbcType="TIMESTAMP"/>
+            <result property="isDelete" column="is_delete" jdbcType="BOOLEAN"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,product_id,price,
+        stock,sku,created,
+        updated,is_delete
+    </sql>
+</mapper>

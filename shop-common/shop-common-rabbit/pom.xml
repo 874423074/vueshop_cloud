@@ -5,22 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.markerhub</groupId>
-        <artifactId>vueshop-cloud</artifactId>
+        <artifactId>shop-common</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>shop-common</artifactId>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>shop-common-core</module>
-        <module>shop-common-mybatis</module>
-        <module>shop-common-redis</module>
-        <module>shop-common-satoken</module>
-        <module>shop-common-feign</module>
-        <module>shop-common-upload</module>
-        <module>shop-common-rabbit</module>
-    </modules>
+    <artifactId>shop-common-rabbit</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -29,11 +18,11 @@
     </properties>
 
     <dependencies>
-        <!--云存储-->
         <dependency>
-            <groupId>com.qcloud</groupId>
-            <artifactId>cos_api</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
+
     </dependencies>
 
 </project>

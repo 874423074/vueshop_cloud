@@ -96,6 +96,16 @@
                 <artifactId>shop-common-redis</artifactId>
                 <version>${vueshop-cloud.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-common-upload</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.markerhub</groupId>
+                <artifactId>shop-common-rabbit</artifactId>
+                <version>${vueshop-cloud.version}</version>
+            </dependency>
 
             <!--service-->
             <dependency>
