@@ -3,24 +3,18 @@ server:
 spring:
   application:
     name: shop-auth
+  profiles:
+    active: test
   cloud:
     nacos:
       discovery:
         server-addr: localhost:8848
         username: nacos
         password: nacos
-  redis:
-    host: localhost
-  datasource:
-    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-    url: jdbc:p6spy:mysql://localhost:3306/vueshop?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
-    username: root
-    password: admin
-feign:
-  client:
-    config:
-      default:
-        connectTimeout: 3000
-        readTimeout: 3000
-  sentinel:
-    enabled: true
+      config:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        file-extension: yml # 加载配置：shop-auth-test.yml
+        shared-configs: # application-test.yml
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}

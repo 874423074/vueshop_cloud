@@ -3,29 +3,18 @@ server:
 spring:
   application:
     name: shop-gateway
+  profiles:
+    active: test
   cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-      routes:
-        - id: shop-auth-route
-          uri: lb://shop-auth
-          predicates:
-            - Path=/a/**
-          filters:
-            - StripPrefix=1
-        - id: shop-system-route
-          uri: lb://shop-system
-          predicates:
-            - Path=/s/**
-          filters:
-            - StripPrefix=1
     nacos:
       discovery:
         server-addr: localhost:8848
         username: nacos
         password: nacos
-sa-token:
-  token-name: satoken
-  is-read-cookie: false
+      config:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        file-extension: yml
+        shared-configs:
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension} # application-test.yml
