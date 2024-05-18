@@ -27,10 +27,14 @@ public class Result<T> implements Serializable {
 	}
 
 	public static <T> Result<T> fail(String msg) {
+		return fail(msg, null);
+	}
+
+	public static <T> Result<T> fail(String msg, T data) {
 		Result<T> result = new Result<>();
 		result.setCode(400);
 		result.setMsg(msg);
-		result.setData(null);
+		result.setData(data);
 		return result;
 	}
 
