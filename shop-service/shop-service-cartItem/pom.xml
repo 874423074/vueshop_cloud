@@ -17,4 +17,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.markerhub</groupId>
+            <artifactId>shop-service-cartItem-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.markerhub</groupId>
+            <artifactId>shop-service-product-api</artifactId>
+        </dependency>
+    </dependencies>
 </project>

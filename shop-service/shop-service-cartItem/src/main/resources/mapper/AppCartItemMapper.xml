@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.markerhub.cartItem.mapper.AppCartItemMapper">
+
+    <select id="getCartItemsWithProductInfo" resultType="com.markerhub.cartItem.entity.AppCartItem">
+        SELECT
+            c.*, p.name AS productName,
+            p.sn AS productSn,
+            p.image AS productImage,
+            p.category_id AS categoryId,
+            IFNULL(s.price, p.price) AS price,
+            IFNULL(s.sku, '默认规格') AS sku
+        FROM
+            app_cart_item c
+        LEFT JOIN app_sku_stock s ON c.sku_id = s.id
+        LEFT JOIN app_product p ON c.product_id = p.id
+
+        ${ew.customSqlSegment}
+    </select>
+</mapper>
