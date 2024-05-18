@@ -2,6 +2,7 @@ package com.markerhub.cartItem.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.markerhub.cartItem.entity.AppCartItem;
+import com.markerhub.cartItem.dto.PreviewDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,4 +23,6 @@ public interface AppCartItemService extends IService<AppCartItem> {
 	void add(AppCartItem appCartItem);
 
 	AppCartItem getCombinedCartItem(long userId, Long productId, Long skuId, Integer quantity);
+
+	List<AppCartItem> getCartItemsByOrderDto(PreviewDto dto);
 }

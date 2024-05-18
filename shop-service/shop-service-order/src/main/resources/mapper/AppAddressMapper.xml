@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.markerhub.order.mapper.AppAddressMapper">
+
+    <resultMap id="BaseResultMap" type="com.markerhub.order.entity.AppAddress">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="userId" column="user_id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="tel" column="tel" jdbcType="VARCHAR"/>
+            <result property="province" column="province" jdbcType="VARCHAR"/>
+            <result property="city" column="city" jdbcType="VARCHAR"/>
+            <result property="county" column="county" jdbcType="VARCHAR"/>
+            <result property="addressDetail" column="address_detail" jdbcType="VARCHAR"/>
+            <result property="areaCode" column="area_code" jdbcType="VARCHAR"/>
+            <result property="postalCode" column="postal_code" jdbcType="VARCHAR"/>
+            <result property="isDefault" column="is_default" jdbcType="BOOLEAN"/>
+            <result property="isDelete" column="is_delete" jdbcType="BOOLEAN"/>
+            <result property="created" column="created" jdbcType="TIMESTAMP"/>
+            <result property="updated" column="updated" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_id,name,
+        tel,province,city,
+        county,address_detail,area_code,
+        postal_code,is_default,is_delete,
+        created,updated
+    </sql>
+</mapper>

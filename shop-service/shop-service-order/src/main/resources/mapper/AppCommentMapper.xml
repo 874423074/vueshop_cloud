@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.markerhub.order.mapper.AppCommentMapper">
+
+    <select id="pageByProductId" resultType="com.markerhub.order.entity.AppComment">
+        SELECT
+            c.*, u.username AS username,
+            u.avatar AS userAvatar
+        FROM
+            app_comment c
+        LEFT JOIN app_user u ON c.user_id = u.id
+        WHERE
+            c.product_id = #{productId}
+    </select>
+</mapper>

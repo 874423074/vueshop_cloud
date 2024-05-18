@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.markerhub.order.mapper.AppOrderItemMapper">
+
+    <resultMap id="BaseResultMap" type="com.markerhub.order.entity.AppOrderItem">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="orderId" column="order_id" jdbcType="BIGINT"/>
+            <result property="skuId" column="sku_id" jdbcType="BIGINT"/>
+            <result property="sku" column="sku" jdbcType="VARCHAR"/>
+            <result property="categoryId" column="category_id" jdbcType="BIGINT"/>
+            <result property="productId" column="product_id" jdbcType="BIGINT"/>
+            <result property="productSn" column="product_sn" jdbcType="VARCHAR"/>
+            <result property="productName" column="product_name" jdbcType="VARCHAR"/>
+            <result property="productImage" column="product_image" jdbcType="VARCHAR"/>
+            <result property="price" column="price" jdbcType="DECIMAL"/>
+            <result property="quantity" column="quantity" jdbcType="INTEGER"/>
+            <result property="commentId" column="comment_id" jdbcType="BIGINT"/>
+            <result property="commentTime" column="comment_time" jdbcType="TIMESTAMP"/>
+            <result property="created" column="created" jdbcType="TIMESTAMP"/>
+            <result property="updated" column="updated" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,order_id,sku_id,
+        sku,category_id,product_id,
+        product_sn,product_name,product_image,
+        price,quantity,comment_id,
+        comment_time,created,updated
+    </sql>
+</mapper>

@@ -2,8 +2,10 @@ package com.markerhub.cartItem.controller;
 
 import cn.hutool.core.collection.ListUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.markerhub.cartItem.dto.PreviewDto;
 import com.markerhub.core.lang.Result;
 import com.markerhub.cartItem.entity.AppCartItem;
+import com.markerhub.satoken.annotation.InnerAuth;
 import com.markerhub.satoken.annotation.Login;
 import com.markerhub.cartItem.service.AppCartItemService;
 import com.markerhub.satoken.utils.StpUserUtil;
@@ -11,6 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/app/cart")
@@ -55,12 +58,15 @@ public class CartItemController {
 	@PostMapping("/delete")
 	public Result delete(@RequestBody Long[] ids) {
 		long userId = StpUserUtil.getLoginIdAsLong();
-		appCartItemService.remove(new QueryWrapper<AppCartItem>()
-				.eq("user_id", userId)
-				.in("id", ListUtil.toList(ids))
-		);
+		appCartItemService.remove(new QueryWrapper<AppCartItem>().eq("user_id", userId).in("id", ListUtil.toList(ids)));
 		return Result.success();
 	}
 
+	// feign
+	@InnerAuth
+	@GetMapping("/getCartItemsByDto")
+	public Result<List<AppCartItem>> getCartItemsByDto(PreviewDto dto) {
+		return Result.success(appCartItemService.getCartItemsByOrderDto(dto));
+	}
 
 }

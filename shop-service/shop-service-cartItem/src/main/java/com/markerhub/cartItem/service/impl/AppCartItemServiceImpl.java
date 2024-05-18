@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.markerhub.cartItem.entity.AppCartItem;
+import com.markerhub.cartItem.dto.PreviewDto;
 import com.markerhub.product.entity.AppProduct;
 import com.markerhub.product.entity.AppSkuStock;
 import com.markerhub.cartItem.mapper.AppCartItemMapper;
@@ -166,6 +167,22 @@ public class AppCartItemServiceImpl extends ServiceImpl<AppCartItemMapper, AppCa
 		return item;
 	}
 
+	@Override
+	public List<AppCartItem> getCartItemsByOrderDto(PreviewDto dto) {
+
+		List<AppCartItem> cartItems;
+		if (dto.getCartIds() != null && dto.getCartIds().size() > 0) {
+			// 购物车购买
+			cartItems = appCartItemMapper.getCartItemsWithProductInfo(new QueryWrapper<AppCartItem>()
+					.eq("user_id", dto.getUserId()).in("c.id", dto.getCartIds()).orderByDesc("created"));
+		} else {
+			// 立即购买
+			AppCartItem cartItem = this.getCombinedCartItem(dto.getUserId(), dto.getProductId(), dto.getSkuId(), dto.getQuantity());
+			cartItems = new ArrayList<>();
+			cartItems.add(cartItem);
+		}
+		return cartItems;
+	}
 }
 
 

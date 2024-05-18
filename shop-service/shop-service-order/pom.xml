@@ -17,4 +17,41 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.markerhub</groupId>
+            <artifactId>shop-service-order-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.markerhub</groupId>
+            <artifactId>shop-common-rabbit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.markerhub</groupId>
+            <artifactId>shop-common-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.markerhub</groupId>
+            <artifactId>shop-common-upload</artifactId>
+        </dependency>
+
+        <!--阿里支付-->
+        <dependency>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.markerhub</groupId>
+            <artifactId>shop-service-product-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.markerhub</groupId>
+            <artifactId>shop-service-cartItem-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.markerhub</groupId>
+            <artifactId>shop-service-user-api</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

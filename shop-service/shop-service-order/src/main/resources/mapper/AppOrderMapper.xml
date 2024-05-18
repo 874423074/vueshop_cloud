@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.markerhub.order.mapper.AppOrderMapper">
+
+    <select id="pageWithUsername" resultType="com.markerhub.order.entity.AppOrder">
+        select
+             o.*, u.username, u.avatar as userAvatar
+        from app_order o
+        left join app_user u on o.user_id = u.id
+        <where>
+            o.is_delete = 0
+            <if test="appOrder.sn != null">
+                and o.sn = #{appOrder.sn}
+            </if>
+            <if test="appOrder.orderStatus != null">
+                and o.order_status = #{appOrder.orderStatus}
+            </if>
+            <if test="appOrder.username != null">
+                and u.username = #{appOrder.username}
+            </if>
+        </where>
+        order by o.created desc
+    </select>
+</mapper>

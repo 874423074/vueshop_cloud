@@ -7,6 +7,7 @@ import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.markerhub.product.dto.ProductQuantityDto;
 import com.markerhub.product.entity.AppCategory;
 import com.markerhub.product.entity.AppProduct;
 import com.markerhub.product.entity.AppSkuStock;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -103,6 +105,21 @@ public class AppProductServiceImpl extends ServiceImpl<AppProductMapper, AppProd
 		return "PD" + dateStr + RandomUtil.randomNumbers(4);
 	}
 
+	/**
+	 * 更新商品销量
+	 */
+	public void updateProductSale(List<ProductQuantityDto> dtos) {
+
+		List<AppProduct> products = new ArrayList<>();
+		dtos.forEach(item -> {
+
+			AppProduct appProduct = this.getById(item.getProductId());
+			appProduct.setSale(appProduct.getSale() + item.getQuantity());
+			products.add(appProduct);
+		});
+
+		this.updateBatchById(products);
+	}
 }
 
 
