@@ -17,4 +17,21 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.markerhub</groupId>
+            <artifactId>shop-common-rabbit</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.markerhub</groupId>
+            <artifactId>shop-service-product-api</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

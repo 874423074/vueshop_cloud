@@ -7,7 +7,7 @@ import com.markerhub.product.entity.AppProduct;
 import com.markerhub.mybatis.base.BaseController;
 import com.markerhub.product.service.AppCategoryService;
 import com.markerhub.product.service.AppProductService;
-import com.markerhub.rabbit.config.SearchRabbitConfig;
+import com.markerhub.rabbit.lang.SearchRabbitConst;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -51,7 +51,7 @@ public class AdminProductController extends BaseController {
 		appProductService.create(appProduct);
 
 		// 同步es与mysql的商品数据
-		rabbitTemplate.convertAndSend(SearchRabbitConfig.SEARCH_EXCHANGE, SearchRabbitConfig.PRODUCT_SEARCH_CREATE_KEY, appProduct.getId());
+		rabbitTemplate.convertAndSend(SearchRabbitConst.SEARCH_EXCHANGE, SearchRabbitConst.PRODUCT_SEARCH_CREATE_KEY, appProduct.getId());
 		return Result.success(appProduct);
 	}
 
@@ -61,7 +61,7 @@ public class AdminProductController extends BaseController {
 
 		appCategoryService.removeByIds(Arrays.asList(ids));
 
-		rabbitTemplate.convertAndSend(SearchRabbitConfig.SEARCH_EXCHANGE, SearchRabbitConfig.PRODUCT_SEARCH_DELETE_KEY, Arrays.asList(ids));
+		rabbitTemplate.convertAndSend(SearchRabbitConst.SEARCH_EXCHANGE, SearchRabbitConst.PRODUCT_SEARCH_DELETE_KEY, Arrays.asList(ids));
 		return Result.success();
 	}
 
@@ -78,7 +78,7 @@ public class AdminProductController extends BaseController {
 		);
 
 		if (isOnSale != null) {
-			rabbitTemplate.convertAndSend(SearchRabbitConfig.SEARCH_EXCHANGE, SearchRabbitConfig.PRODUCT_SEARCH_CREATE_KEY, id);
+			rabbitTemplate.convertAndSend(SearchRabbitConst.SEARCH_EXCHANGE, SearchRabbitConst.PRODUCT_SEARCH_CREATE_KEY, id);
 		}
 
 		return Result.success();
