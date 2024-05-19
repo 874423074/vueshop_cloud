@@ -34,6 +34,7 @@ import com.markerhub.product.feign.AppSkuStockClient;
 import com.markerhub.satoken.utils.StpUserUtil;
 import com.markerhub.user.entity.AppUser;
 import com.markerhub.user.feign.AppUserClient;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -115,6 +116,7 @@ public class AppOrderServiceImpl extends ServiceImpl<AppOrderMapper, AppOrder> i
 	}
 
 	@Override
+	@GlobalTransactional(rollbackFor = Exception.class)
 	public Object create(OrderDto orderDto) {
 		long userId = StpUserUtil.getLoginIdAsLong();
 
@@ -280,7 +282,7 @@ public class AppOrderServiceImpl extends ServiceImpl<AppOrderMapper, AppOrder> i
 	}
 
 	@Override
-	@Transactional(rollbackFor = Exception.class)
+	@GlobalTransactional(rollbackFor = Exception.class)
 	public void cancel(Long id) {
 		AppOrder appOrder = this.getOwnById(id);
 
@@ -298,7 +300,7 @@ public class AppOrderServiceImpl extends ServiceImpl<AppOrderMapper, AppOrder> i
 	}
 
 	@Override
-	@Transactional(rollbackFor = Exception.class)
+	@GlobalTransactional(rollbackFor = Exception.class)
 	public void delete(Long id) {
 		AppOrder appOrder = this.getOwnById(id);
 		Assert.isTrue(Arrays.asList(0, 3, 4, 6, 7).contains(appOrder.getOrderStatus()), "无法删除该订单");
@@ -332,7 +334,7 @@ public class AppOrderServiceImpl extends ServiceImpl<AppOrderMapper, AppOrder> i
 	}
 
 	@Override
-	@Transactional(rollbackFor = Exception.class)
+	@GlobalTransactional(rollbackFor = Exception.class)
 	public void confirm(Long id) {
 		AppOrder appOrder = this.getOwnById(id);
 		Assert.isTrue(appOrder.getOrderStatus() == 2, "该订单无法确认收货");
@@ -390,7 +392,7 @@ public class AppOrderServiceImpl extends ServiceImpl<AppOrderMapper, AppOrder> i
 	}
 
 	@Override
-	@Transactional(rollbackFor = Exception.class)
+	@GlobalTransactional(rollbackFor = Exception.class)
 	public void closeAdmin(Long id, String adminNote, Long adminId) {
 
 		// 被删除或者状态不是待支付的订单统统跳过即可。
