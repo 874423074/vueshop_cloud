@@ -17,7 +17,7 @@ public interface AppProductMapper extends BaseMapper<AppProduct> {
 	@Update("update app_product set stock = stock + #{quantity} where id = #{productId} and stock >= 0")
 	int releaseStock(@Param("productId") Long productId, @Param("quantity") Integer quantity);
 
-	Page<AppProduct> pageWithCategory(Page page, String name, Long categoryId);
+	Page<AppProduct> pageWithCategory(Page page, @Param("name") String name, @Param("categoryId") Long categoryId);
 }
 
 

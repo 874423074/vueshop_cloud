@@ -394,20 +394,19 @@ public class AppOrderServiceImpl extends ServiceImpl<AppOrderMapper, AppOrder> i
 	@Override
 	@GlobalTransactional(rollbackFor = Exception.class)
 	public void closeAdmin(Long id, String adminNote, Long adminId) {
-
-		// 被删除或者状态不是待支付的订单统统跳过即可。
-
 		AppOrder order = this.getById(id);
+		//Assert.notNull(order, "该订单不存在");
 		if (order == null) {
-			log.warn("当前订单被删除了 - orderId: {}", id);
+			// 订单已被手动删除，mq消息不需要做任何处理
 			return;
 		}
 
 		Assert.notNull(adminId, "管理员不能为空");
 		Assert.notNull(adminNote, "管理员备注不能为空");
 
+		// Assert.isTrue(order.getOrderStatus() == 0, "该订单状态不允许关闭");
 		if (order.getOrderStatus() != 0) {
-			log.warn("当前订单状态不能取消，订单ID: {}， 订单状态：{}", order.getId(), order.getOrderStatusStr());
+			// 订单状态不为待支付，那么不做任何处理
 			return;
 		}
 
