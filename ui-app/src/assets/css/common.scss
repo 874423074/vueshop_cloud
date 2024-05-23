@@ -1,0 +1,35 @@
+.content-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*
+vConsole
+*/
+#__vconsole .vc-toolbar .vc-tool{
+    height: 50px;
+    line-height: 52px;
+}
+
+#__vconsole .vc-logbox .vc-cmd{
+    display: none!important;
+}
+
+#__vconsole .vc-logbox .vc-item .vc-fold{
+    padding: 10px 0;
+}
+
+.container-overflow{
+    height: 100%;
+    overflow: hidden!important;
+}
+
+
+.van-tabbar {
+    padding: 5px 0;
+
+    .van-tabbar-item__text {
+        font-size: 20px;
+    }
+}
