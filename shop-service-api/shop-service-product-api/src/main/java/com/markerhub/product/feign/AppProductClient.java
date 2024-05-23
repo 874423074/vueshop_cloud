@@ -24,6 +24,6 @@ public interface AppProductClient {
 	@PostMapping("/app/product/increaseCommentCount")
 	void increaseCommentCount(@NotNull Long productId);
 
-	@PostMapping("/product/updateSales")
+	@PostMapping("/app/product/updateSales")
 	void updateProductSale(@RequestBody List<ProductQuantityDto> dtos);
 }

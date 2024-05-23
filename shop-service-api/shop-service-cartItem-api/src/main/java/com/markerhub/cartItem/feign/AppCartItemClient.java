@@ -16,6 +16,6 @@ public interface AppCartItemClient {
 	@PostMapping("/app/cart/delete")
 	Result<?> delete(@RequestBody List<Long> ids);
 
-	@GetMapping("/getCartItemsByDto")
-	Result<List<AppCartItem>> getCartItemsByDto(PreviewDto dto);
+	@PostMapping("/app/cart/getCartItemsByDto")
+	Result<List<AppCartItem>> getCartItemsByDto(@RequestBody PreviewDto dto);
 }

@@ -6,6 +6,7 @@ import com.markerhub.core.lang.Result;
 import com.markerhub.product.dto.ProductQuantityDto;
 import com.markerhub.product.entity.AppProduct;
 import com.markerhub.mybatis.base.BaseController;
+import com.markerhub.product.entity.AppSkuStock;
 import com.markerhub.product.service.AppProductService;
 import com.markerhub.product.service.AppSkuStockService;
 import com.markerhub.satoken.annotation.InnerAuth;
@@ -76,5 +77,13 @@ public class ProductController extends BaseController {
 	void updateProductSale(@RequestBody List<ProductQuantityDto> dtos) {
 		appProductService.updateProductSale(dtos);
 	}
+
+	@InnerAuth
+	@GetMapping("/product/sku")
+	Result<AppSkuStock> getSku(@RequestParam("skuId") long skuId, @RequestParam("productId") long productId){
+
+		return Result.success(appSkuStockService.getSku(skuId, productId));
+	}
+
 
 }

@@ -135,7 +135,7 @@
 			// 初始化 旧商品规格
 			oldSpecValues.value.push(...privateGoodsItem.value)
 
-			data.skus.push(...res.data.skus)
+			data.skus.push(...res.data.skuStocks)
 		})
 	}
 	initData()

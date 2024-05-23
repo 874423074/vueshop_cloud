@@ -64,8 +64,8 @@ public class CartItemController {
 
 	// feign
 	@InnerAuth
-	@GetMapping("/getCartItemsByDto")
-	public Result<List<AppCartItem>> getCartItemsByDto(PreviewDto dto) {
+	@PostMapping("/getCartItemsByDto")
+	public Result<List<AppCartItem>> getCartItemsByDto(@RequestBody PreviewDto dto) {
 		return Result.success(appCartItemService.getCartItemsByOrderDto(dto));
 	}
 
